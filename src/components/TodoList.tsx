@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Todo from "./Todo";
 
-import { getTodos } from "../api/endpoints";
+import { deleteTodo, getTodos, updateTodo } from "../api/endpoints";
 import AddTodo from "./AddTodo";
 
 interface TodoType {
@@ -20,7 +20,10 @@ export default function TodoList() {
     fetchTodos();
   }, []);
 
-  const handleToggle = (id: number) => {
+  const handleToggle = async (id: number) => {
+    const todoToUpdate = todos.find((todo) => todo.id == id);
+    const completed = todoToUpdate?.completed as boolean;
+    await updateTodo(id, completed);
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -28,7 +31,8 @@ export default function TodoList() {
     );
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: number) => {
+    await deleteTodo(id);
     setTodos((prevState) => prevState.filter((todo) => todo.id !== id));
   };
 
