@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Todo from "./Todo";
 
 import { deleteTodo, getTodos, updateTodo } from "../api/endpoints";
@@ -37,7 +37,7 @@ export default function TodoList() {
   };
 
   const addTodo = (todo: TodoType) => {
-    setTodos((prev) => [todo, ...todos]);
+    setTodos(() => [todo, ...todos]);
   };
   console.log("Todos :", todos);
   return (

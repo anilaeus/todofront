@@ -1,6 +1,4 @@
 import axios from "axios";
-import { FormEvent } from "react";
-import { TodoType } from "../..";
 
 const BASE_URL = `http://127.0.0.1:3000`;
 
@@ -30,7 +28,7 @@ export const updateTodo = async (id: number, completed: boolean) => {
 
 export const deleteTodo = async (id: number) => {
   try {
-    const res = await axios.delete(`${BASE_URL}/api/v1/todos/${id}`);
+    await axios.delete(`${BASE_URL}/api/v1/todos/${id}`);
   } catch (e) {
     console.error(
       "An error has been occured while trying to delete todo for id : ",
