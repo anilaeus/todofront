@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = `http://127.0.0.1:3000`;
+const BASE_URL = `http://159.223.4.145`;
 
 const GET_URL = `${BASE_URL}/api/v1/todos`;
 
